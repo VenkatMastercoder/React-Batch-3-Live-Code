@@ -1,11 +1,34 @@
+// import { cardImage } from "../../assets/images";
+import cardImg from "../../assets/cardImg.jpeg";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 const RestaurantCard = (restaurant) => {
   return (
     <div
       key={restaurant.id}
       className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img className="w-full h-44 object-fit" src={restaurant.image} alt="Restaurant Image" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{restaurant.name}</div>
+      {/* <img
+        className="w-full h-44 object-fit"
+        src={cardImg}
+        alt="Restaurant Image"
+      /> */}
+      <div>
+        <LazyLoadImage
+          alt="Restaurant Image"
+          className="w-full h-[90%] object-full"
+          src={cardImg} // use normal <img> attributes as props
+          height={100}
+          width={500}
+          effect="blur"
+        />
+      </div>
+
+      <div className="px-6 py-4 mt-2">
+        <div className="font-bold text-xl mb-2 bg-red-600">
+          {restaurant.name}
+        </div>
         <p className="text-gray-700 text-base">{restaurant.description}</p>
         <p className="text-gray-700 text-base mt-2">
           Location: {restaurant.location}

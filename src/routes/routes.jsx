@@ -1,10 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Banner from "../component/Banner/Banner";
-import Offer from "../component/Offer/Offer";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
-import AppLayout from "../layout/AppLayout";
-import Home from "../pages/Home";
-import Contact from "../component/Contact/Contact";
+import AppLayout from "../layout/AppLayout"; // Normal Import
+import { Suspense, lazy } from "react";
+
+// Lazy Loading
+const Home = lazy(() => import("../pages/Home"));
+const Offer = lazy(() => import("../component/Offer/Offer"));
+const Contact = lazy(() => import("../component/Contact/Contact"));
+const Banner = lazy(() => import("../component/Banner/Banner")); // Dynamic Import
 
 const appRouter = createBrowserRouter([
   {
@@ -13,23 +16,39 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <Suspense fallback={<p>Loading</p>}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/offer",
-        element: <Offer />,
+        element: (
+          <Suspense fallback={<p>Loading</p>}>
+            <Offer />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<p>Loading</p>}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/banner",
-        element: <Banner />,
+        element: (
+          <Suspense fallback={<p>Loading</p>}>
+            <Banner />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <ErrorPage />,
   },
 ]);
 
-export default appRouter
+export default appRouter;

@@ -1,0 +1,1 @@
+export const cardImage = "https://ik.imagekit.io/4z8covdo9/Food%20Store/carImg.avif_updatedAt=1710495971107?updatedAt=1715261197981"
