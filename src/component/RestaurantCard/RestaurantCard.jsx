@@ -18,7 +18,7 @@ const RestaurantCard = (restaurant) => {
         <LazyLoadImage
           alt="Restaurant Image"
           className="w-full h-[90%] object-full"
-          src={cardImg} // use normal <img> attributes as props
+          src={restaurant.image} // use normal <img> attributes as props
           height={100}
           width={500}
           effect="blur"
@@ -26,7 +26,7 @@ const RestaurantCard = (restaurant) => {
       </div>
 
       <div className="px-6 py-4 mt-2">
-        <div className="font-bold text-xl mb-2 bg-red-600">
+        <div className="font-bold text-xl mb-2">
           {restaurant.name}
         </div>
         <p className="text-gray-700 text-base">{restaurant.description}</p>
