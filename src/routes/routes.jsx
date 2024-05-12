@@ -7,7 +7,8 @@ import { Suspense, lazy } from "react";
 const Home = lazy(() => import("../pages/Home"));
 const Offer = lazy(() => import("../component/Offer/Offer"));
 const Contact = lazy(() => import("../component/Contact/Contact"));
-const Banner = lazy(() => import("../component/Banner/Banner")); // Dynamic Import
+const Banner = lazy(() => import("../component/Banner/Banner")); 
+// Dynamic Import
 
 const appRouter = createBrowserRouter([
   {
