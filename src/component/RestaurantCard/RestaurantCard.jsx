@@ -1,8 +1,9 @@
 // import { cardImage } from "../../assets/images";
-import cardImg from "../../assets/cardImg.jpeg";
+// import cardImg from "../../assets/cardImg.jpeg";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Link } from "react-router-dom";
 
 const RestaurantCard = (restaurant) => {
   return (
@@ -26,9 +27,7 @@ const RestaurantCard = (restaurant) => {
       </div>
 
       <div className="px-6 py-4 mt-2">
-        <div className="font-bold text-xl mb-2">
-          {restaurant.name}
-        </div>
+        <div className="font-bold text-xl mb-2">{restaurant.name}</div>
         <p className="text-gray-700 text-base">{restaurant.description}</p>
         <p className="text-gray-700 text-base mt-2">
           Location: {restaurant.location}
@@ -37,9 +36,11 @@ const RestaurantCard = (restaurant) => {
         <p className="text-gray-700 text-base">
           Rating: {restaurant.rating} ({restaurant.reviews} reviews)
         </p>
-        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
-          Order Now
-        </button>
+        <Link to={"/restaurant/" + restaurant.id}>
+          <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
+            Order Now
+          </button>
+        </Link>
       </div>
     </div>
   );

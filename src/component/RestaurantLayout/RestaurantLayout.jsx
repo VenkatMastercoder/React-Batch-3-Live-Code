@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 
 const RestaurantLayout = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loader or Shimmer 
 
-  const [restaurantCardData, setRestaurantCardData] = useState([]);
+  const [restaurantCardData, setRestaurantCardData] = useState([]); // store the data
 
   const [filterData, setFilterData] = useState([]);
 
@@ -24,8 +24,9 @@ const RestaurantLayout = () => {
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU",
         },
       });
-      const data = await res.json();
+      const data = await res.json(); // 50 card data
       setRestaurantCardData(data.products);
+      console.log(data)
       setFilterData(data.products);
     } catch (err) {
       console.log(err);
@@ -120,6 +121,7 @@ const RestaurantLayout = () => {
               return (
                 <RestaurantCard
                   key={uuidv4()}
+                  id={restaurant.id}
                   name={restaurant.title}
                   image={restaurant.image_url}
                   description={restaurant.title}
