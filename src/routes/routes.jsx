@@ -4,6 +4,8 @@ import AppLayout from "../layout/AppLayout"; // Normal Import
 import { Suspense, lazy } from "react";
 import RestaurantCard from "../component/RestaurantCard/RestaurantCard";
 import RestaurantDetailsPage from "../component/RestaurantDetailsPage/RestaurantDetailsPage";
+import CartPage from "../component/CartPage/CartPage";
+import Login from "../component/Login/Login";
 
 // Lazy Loading
 const Home = lazy(() => import("../pages/Home"));
@@ -17,6 +19,14 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />, // Parent
     children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
+      },
       {
         path: "/",
         element: (

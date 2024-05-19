@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../component/Footer/Footer";
 import Header from "../component/Header/Header";
+import CartProvider from "../context/cartContext";
 
 const AppLayout = () => {
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <CartProvider>
+        <Header />
+        <Outlet />
+        <Footer />
+      </CartProvider>
     </>
   );
 };

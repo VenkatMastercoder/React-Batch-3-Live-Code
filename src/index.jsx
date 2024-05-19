@@ -5,4 +5,5 @@ import appRouter from "./routes/routes";
 import { RouterProvider } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(<RouterProvider router={appRouter} />);

@@ -2,42 +2,14 @@ import { Link } from "react-router-dom";
 // import { restaurantData } from "../../api/dataSet";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import { v4 as uuidv4 } from "uuid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useFetchDataRestaurant from "../../hooks/useFetchDataRestaurant";
 
 const RestaurantLayout = () => {
-  const [isLoading, setIsLoading] = useState(false); // Loader or Shimmer 
-
-  const [restaurantCardData, setRestaurantCardData] = useState([]); // store the data
-
-  const [filterData, setFilterData] = useState([]);
-
   // const searchData = "Text"
   const [searchData, setSearchData] = useState();
 
-  const fetchData = async () => {
-    // API CALL
-    setIsLoading(true);
-    try {
-      const res = await fetch("https://apis.ccbp.in/products/", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU",
-        },
-      });
-      const data = await res.json(); // 50 card data
-      setRestaurantCardData(data.products);
-      console.log(data)
-      setFilterData(data.products);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { isLoading, restaurantCardData, filterData } = useFetchDataRestaurant();
 
   if (isLoading) {
     <p>Loafing</p>;
@@ -68,7 +40,7 @@ const RestaurantLayout = () => {
                   const moreRatingData = restaurantCardData.filter((e) => {
                     return e.rating >= 4.5;
                   });
-                  setRestaurantCardData(moreRatingData);
+                  // setRestaurantCardData(moreRatingData);
                 }}>
                 Rating More than 4.5
               </button>
@@ -79,7 +51,7 @@ const RestaurantLayout = () => {
                   const moreRatingData = restaurantCardData.filter((e) => {
                     return e.rating <= 4.5;
                   });
-                  setRestaurantCardData(moreRatingData);
+                  // setRestaurantCardData(moreRatingData);
                 }}>
                 Rating less than 4.5
               </button>
@@ -87,7 +59,7 @@ const RestaurantLayout = () => {
               <button
                 className="bg-green-500 text-white font-bold py-2 px-4 rounded mt-4 max-w-60"
                 onClick={() => {
-                  setRestaurantCardData(restaurantCardData);
+                  // setRestaurantCardData(restaurantCardData);
                 }}>
                 All Restaurants
               </button>
@@ -108,7 +80,7 @@ const RestaurantLayout = () => {
                         .toLowerCase()
                         .includes(searchData.toLowerCase());
                     });
-                    setFilterData(filterData);
+                    // setFilterData(filterData);
                   }}>
                   Search
                 </button>
