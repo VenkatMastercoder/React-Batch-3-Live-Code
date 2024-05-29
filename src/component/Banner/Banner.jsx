@@ -10,8 +10,9 @@ const Banner = () => {
   // State Variable
   let [count, setCount] = useState(1);
   let [test, setTest] = useState(1);
+
   let [data, setData] = useState({});
-  let [loading, setLoading] = useState(false);
+  let [loading, setLoading] = useState(true);
 
   // --  Step : 2
 
@@ -21,15 +22,10 @@ const Banner = () => {
   //   setCount(count)
   // },[count])
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     // API Call
 
     try {
-      setLoading(true);
       // GET
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/todos/1"
@@ -44,13 +40,21 @@ const Banner = () => {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log(loading);
+
   // Step 1 : Render
 
-  if (loading) {
+  if (loading && loading === null) {
     return <ShimmerThumbnail height={250} rounded />;
   } else {
     return (
-      <>
+      <> {
+        
+      }
         <p className="bg-black text-white">{UserData.name}</p>
         <button
           className="h-11 bg-blue-500 px-5 text-white"

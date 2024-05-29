@@ -15,7 +15,6 @@ const CartProvider = ({ children }) => {
         return { ...e, quantity: quantity };
       }
     });
-
     SetCart(updatedCartItem);
   };
 
